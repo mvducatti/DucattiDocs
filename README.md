@@ -2,5 +2,3 @@
 
 ## Testando minha primeira configuracao
 
-### Hello 3
-
