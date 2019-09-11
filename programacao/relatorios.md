@@ -1,7 +1,3 @@
----
-description: Criando relatórios
----
-
 # Relatórios
 
 ## Referências

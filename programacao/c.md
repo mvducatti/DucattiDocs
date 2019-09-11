@@ -1,7 +1,3 @@
----
-description: 'Códigos de C#'
----
-
 # C\#
 
 ## Override

@@ -1,7 +1,3 @@
----
-description: Códigos de AngularJS
----
-
 # AngularJS
 
 ## Documentação de Métodos no AFS

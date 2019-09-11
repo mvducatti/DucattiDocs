@@ -1,7 +1,3 @@
----
-description: Trabalhando com filtros
----
-
 # Filtros JS, LINQ, Lodash
 
 ## **LINQ C\#**

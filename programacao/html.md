@@ -1,7 +1,3 @@
----
-description: Trabalhando com o frontend
----
-
 # HTML
 
 Você pode passar parâmetros pela URL, que vai chegar no Index do C\#

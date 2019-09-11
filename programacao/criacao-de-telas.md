@@ -1,7 +1,3 @@
----
-description: Criando telas no AFS
----
-
 # Criação de Telas
 
 ## Observações Iniciais

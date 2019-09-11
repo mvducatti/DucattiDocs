@@ -1,9 +1,3 @@
----
-description: >-
-  Aqui você pode encontrar exemplos de programação com C#, LINQ, Javascript,
-  etc...
----
-
 # Programação
 
 ## C\#
