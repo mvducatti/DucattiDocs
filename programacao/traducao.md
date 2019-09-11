@@ -1,6 +1,6 @@
 # Tradução
 
-## Fazer Unload do projeto **`Sda.Afs.Resources`**
+## Fazer Unload do projeto `Sda.Afs.Resources`
 
 ​
 
