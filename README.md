@@ -1,14 +1,10 @@
-# Initial page
+# Bem-vindo ao Ducatti Docs
 
-## Testando minha primeira configuracao
+## O que é o Ducatti Docs?
 
-## testando
+Ducatti Docs é onde é colocado todas as informações e conhecimento adquiridos ao longo do tempo por mim ou por ensinamento de outros.
 
-Testando
+by Marcos Vinicius Ducatti
 
-sjdisdjisjdsjdids
 
-ola
-
-deu certo
 

@@ -1,2 +1,0 @@
-# Cheguei gente
-

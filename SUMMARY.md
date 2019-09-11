@@ -1,12 +1,13 @@
 # Table of contents
 
-* [Initial page](README.md)
-* [Testando](testando/README.md)
-  * [Cheguei gente](testando/cheguei-gente.md)
-* [Henrique](henrique/README.md)
-  * [Harold](henrique/harold.md)
-
-## Testando Grupo
-
-* [Testando grupo](testando-grupo/testando-grupo.md)
+* [Bem-vindo ao Ducatti Docs](README.md)
+* [Programação](programacao/README.md)
+  * [Tradução](programacao/traducao.md)
+  * [Mapeamento](programacao/mapeamento.md)
+  * [Criação de Telas](programacao/criacao-de-telas.md)
+  * [HTML](programacao/html.md)
+  * [Filtros JS, LINQ, Lodash](programacao/filtros-js-linq-lodash.md)
+  * [Relatórios](programacao/relatorios.md)
+  * [AngularJS](programacao/angularjs.md)
+  * [C\#](programacao/c.md)
 
