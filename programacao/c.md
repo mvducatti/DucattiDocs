@@ -195,7 +195,7 @@ Exibir ou esconder campos baseado no valor
 
 ## Reflection
 
-Quando houver uma Reflection no código, tentar achar o cenário correto de quando ela vai chamar o método que você precisa e apertar `F11`.
+Quando houver uma Reflection no código, tentar achar o cenário correto de quando ela vai chamar o método que você precisa e apertar **`F11`**.
 
 ```csharp
 EnhancedField field = (EnhancedField)method.Invoke(this, parameter); //Aperte F11 aqui para ser redirecionado magicamente para o método que você quer (se estiver dentro do cenário correto)
@@ -258,5 +258,37 @@ public class Program
 
 ```csharp
 Country = new Country { Code = "BR", Id = 1 }
+```
+
+## Referência \(ref\)
+
+Com a referência você pode enviar o objeto ques está sendo usado atualmente e alterar os valores do mesmo. Num método normal, se você fizesse isso ele não manteria as alterações assim que acabasse o método, porém como estamos passando a referência do mesmo objeto, as alterações serão significativas no mesmo.   
+  
+No caso abaixo está sendo verificado se o objeto e as propriedades do mesmo são nulo, se as propriedades forem nulas, então seta o objeto inteiro para nulo e continua normalmente. A diferença é que como foi passado como referência, o objeto que foi passado como parâmetro vai ficar nulo devido à alteração dentro do método. Deve-se usar **`ref`** com muita responsabilidade.
+
+```csharp
+//Chamando o método passando o objeto como diferente de null
+ValidatePersonAddress(ref personAddress)
+
+public bool ValidatePersonAddress(ref PersonAddress personAddress)
+{
+    if (personAddress != null)
+    {
+        if (personAddress.ZipCode == null && personAddress.PersonAddressType == null && personAddress.Street1 == null && personAddress.Street2 == null &&
+            personAddress.Number == null && personAddress.District == null && personAddress.Locality == null)
+        {
+            personAddress = null;
+            return false;
+        }
+        else
+        {
+            return true;
+        };
+    }
+    else
+    {
+        return true;
+    }
+}
 ```
 
