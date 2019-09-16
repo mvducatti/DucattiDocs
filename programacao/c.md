@@ -38,8 +38,8 @@ foreach (object[] item in result){
 Se necessário passar um Model, aonde você sabe que será somente utilizado o Id dele na frente, instanciar um objeto do Model passando o Id que você já tem como propriedade. Isso irá gerar um Model com apenas o Id.
 
 ```csharp
-var entityId = '2C6CA733-7D0F-416C-8D11-2E8C5F31E0CF'
-functio foo(new Entity() { Id = entityId })
+Guid entityId = '2C6CA733-7D0F-416C-8D11-2E8C5F31E0CF'
+function foo(new Entity() { Id = entityId })
 ```
 
 ## Acessando Itens da Sessão
@@ -53,6 +53,8 @@ SessionBusiness.Current.SdaSystem
 Salvando Corretamente utilizando Business e Rollback utilizando como exemplo UserEntityPreventNotificationBusiness.cs e RequestController.cs
 
 ## **Controller**
+
+Exemplo de Controller passando informações para a **`View`**
 
 ```csharp
 public JsonResult SaveNotificationConfiguration(IList<UserEntityPreventNotification> notifyConfigSave, IList<UserEntityPreventNotification> notifyConfigDelete)
@@ -120,7 +122,6 @@ Para realizar uma cópia, basta inserir o código a seguir no objeto instanciado
 ```csharp
 Billet originalBillet;
 originalBillet = billet.Clone() as Billet;
-​
 ```
 
 ![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.54.png)
