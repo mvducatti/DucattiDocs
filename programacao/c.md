@@ -330,3 +330,11 @@ public static string FormatWithMask(this string input, string mask)
         }
 ```
 
+## Comparando Enums / Dispose
+
+Comparando Enums a partir dos seus índices. Dispose é quando você precisa instanciar uma classe, porém não quero utilizá-la, quer apenas rodar uma método. O `_ =` ajuda a economizar o espaço que uma variável seria criada.
+
+```csharp
+_ = DocumentFactory.ResetFactory(Enum.GetName(typeof(CountryCodeEnum), (int)countryEnum));
+```
+
