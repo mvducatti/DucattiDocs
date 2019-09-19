@@ -338,3 +338,15 @@ Comparando Enums a partir dos seus índices. Dispose é quando você precisa ins
 _ = DocumentFactory.ResetFactory(Enum.GetName(typeof(CountryCodeEnum), (int)countryEnum));
 ```
 
+## IsNullOrWhiteSpace
+
+Trabalhar com IsNullOrWhiteSpace é melhor porque além de verificar se é null ou WhiteSpace adiciona o método Trim\(\).
+
+```csharp
+string empty= " ";
+String.IsNullOrWhiteSpace(empty); //true
+
+string empty= "Lorem Ipsum";
+String.IsNullOrWhiteSpace(empty); //false
+```
+
