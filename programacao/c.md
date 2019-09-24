@@ -350,3 +350,14 @@ string empty= "Lorem Ipsum";
 String.IsNullOrWhiteSpace(empty); //false
 ```
 
+## Filtrar somente números da string
+
+```csharp
+using System;
+using System.Linq; //Importar para utilizar o .Where();
+
+string cpf = "337   98dsasaddas96489!@¨#%¨*@#%¨*@%¨!#%!&*@¨#¨&!@0";
+string teste = new string(cpf.Where(c => char.IsDigit(c)).ToArray());
+Console.WriteLine(teste); //"33798964890"
+```
+
