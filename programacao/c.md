@@ -361,3 +361,14 @@ string teste = new string(cpf.Where(c => char.IsDigit(c)).ToArray());
 Console.WriteLine(teste); //"33798964890"
 ```
 
+## Trabalhar com Propriedades que podem se nulas
+
+ Se o .Locality não for encontrado, aparecerá o seguinte erro: **`Object reference not set to an instance of an object.`**
+
+Com ponto de **`?`** evitamos esse erro. Exemplo no código abaixo de como colocar o **`?`**
+
+```csharp
+Locality locality = BusinessFactory.Instance.GetEntityAddressBusiness()
+    .GetByEntityId(entity.Id)?.Locality;
+```
+
