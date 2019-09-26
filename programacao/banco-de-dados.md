@@ -64,6 +64,8 @@ ROLLBACK TRANSACTION
 
 Ao contrário do SQL normal que você utiliza o nome literal das colunas no banco, no HQL os nomes das colunas são os mesmos utilizados e mapeados dentro da classe do C\#.
 
+**obs:** Mesmo se você tiver uma classe de referência dentro da sua classe, deve ser feito um inner join
+
 ```sql
 string hql = @" SELECT ct
                 FROM CollectionTypeCountry ctc
