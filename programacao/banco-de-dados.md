@@ -60,3 +60,18 @@ select * from DocumentType
 ROLLBACK TRANSACTION
 ```
 
+## Consulta com HQL \(C\#\)
+
+Ao contrário do SQL normal que você utiliza o nome literal das colunas no banco, no HQL os nomes das colunas são os mesmos utilizados e mapeados dentro da classe do C\#.
+
+```sql
+string hql = @" SELECT ct
+                FROM ColectionType ct
+                INNER JOIN ct.CollectionTypeCountry ctc
+                WHERE ctc.Code = :CountryCode";
+
+var query = GetDefaultSession().CreateQuery(hql);
+query.SetParameter("CountryCode", countryCode);
+return query.List<CollectionType>();
+```
+
