@@ -66,11 +66,12 @@ Ao contrário do SQL normal que você utiliza o nome literal das colunas no banc
 
 ```sql
 string hql = @" SELECT ct
-                FROM ColectionType ct
-                INNER JOIN ct.CollectionTypeCountry ctc
-                WHERE ctc.Code = :CountryCode";
+                FROM CollectionTypeCountry ctc
+                INNER JOIN ctc.CollectionType ct
+                INNER JOIN ctc.Country c
+                WHERE c.Code = :CountryCode";
 
-var query = GetDefaultSession().CreateQuery(hql);
+NHibernate.IQuery query = GetDefaultSession().CreateQuery(hql);
 query.SetParameter("CountryCode", countryCode);
 return query.List<CollectionType>();
 ```
