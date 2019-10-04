@@ -372,3 +372,30 @@ Locality locality = BusinessFactory.Instance.GetEntityAddressBusiness()
     .GetByEntityId(entity.Id)?.Locality;
 ```
 
+## Alterando Propriedades - Tradução \(AFS\)
+
+Alterando a propriedade de um objeto quando receber um valor. Esse códiog traduz quando a classe for receber valores de alguma chamada que irá popular a classe, no caso em específico estamos realizando a tradução do mesmo através de um métood criado no próprio AFS de traduzir strings, porém o exemplo serve como modelo para quando for necessário realizar algo que seja parecido, como realizar alguma conta antes de atribuir o valor da propriedade, por exemplo.
+
+```csharp
+namespace Sda.Afs.Entities
+{
+    public partial class CollectionType
+    {
+        private string _Description;
+
+        [DataMember]
+        public virtual string Description
+        {
+            get
+            {
+                return this._Description.TranslateString();
+            }
+            set
+            {
+                _Description = value;
+            }
+        }
+    }
+}
+```
+
