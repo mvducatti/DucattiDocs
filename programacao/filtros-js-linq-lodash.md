@@ -16,6 +16,26 @@ Retornando valores diferentes
 var foo = list1.Where(x => !list2.Select(y => y.id).Contains(x.id));
 ```
 
+### SelectMany
+
+Se você tiver uma lista de Documentos dentro da classe pessoa ex:
+
+```csharp
+public class Person
+{
+    IList<Document> Documents { get; set; }
+}
+```
+
+e você quer somente os documentos você deve utilizar .SelectMany\(\) ao invés de .Select\(\)
+
+```csharp
+basicConfigType.GetAll().Select(x => x.PaymentTypes).ToList();
+// Retorna IEnumerable<List<Document>> - ERRADO
+basicConfigType.GetAll().SelectMany(x => x.PaymentTypes).ToList();
+// Retorna List<PaymentType> - CORRETO
+```
+
 ## LODASH \_.
 
 ### Filtrando com objetos específicos dentro de uma lista
