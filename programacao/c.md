@@ -1,6 +1,8 @@
 # C\#
 
-## Override
+## Conceitos Avançados 🎃
+
+### Override
 
 Para poder dar override em métodos no C\#, o método ou objeto deve estar setado como
 
@@ -8,7 +10,7 @@ Para poder dar override em métodos no C\#, o método ou objeto deve estar setad
 virtual
 ```
 
-## Polimorfismo
+### Polimorfismo
 
 [https://pt.wikipedia.org/wiki/Polimorfismo\_\(inform%C3%A1tica\)](https://pt.wikipedia.org/wiki/Polimorfismo_%28inform%C3%A1tica%29)
 
@@ -33,46 +35,58 @@ foreach (object[] item in result){
 }
 ```
 
-## Model
+### Referência \(ref\)
 
-Se necessário passar um Model, aonde você sabe que será somente utilizado o Id dele na frente, instanciar um objeto do Model passando o Id que você já tem como propriedade. Isso irá gerar um Model com apenas o Id.
-
-```csharp
-Guid entityId = '2C6CA733-7D0F-416C-8D11-2E8C5F31E0CF'
-function foo(new Entity() { Id = entityId })
-```
-
-## Acessando Itens da Sessão
-
-É possível acessar propriedades da sessão atual e resgatar o seu valor quando necessário, evitando assim códigos maiores para a mesma busca.
+Com a referência você pode enviar o objeto ques está sendo usado atualmente e alterar os valores do mesmo. Num método normal, se você fizesse isso ele não manteria as alterações assim que acabasse o método, porém como estamos passando a referência do mesmo objeto, as alterações serão significativas no mesmo.   
+  
+No caso abaixo está sendo verificado se o objeto e as propriedades do mesmo são nulo, se as propriedades forem nulas, então seta o objeto inteiro para nulo e continua normalmente. A diferença é que como foi passado como referência, o objeto que foi passado como parâmetro vai ficar nulo devido à alteração dentro do método. Deve-se usar **`ref`** com muita responsabilidade.
 
 ```csharp
-SessionBusiness.Current.SdaSystem
-```
+//Chamando o método passando o objeto como diferente de null
+ValidatePersonAddress(ref personAddress)
 
-Salvando Corretamente utilizando Business e Rollback utilizando como exemplo UserEntityPreventNotificationBusiness.cs e RequestController.cs
-
-## **Controller**
-
-Exemplo de Controller passando informações para a **`View`**
-
-```csharp
-public JsonResult SaveNotificationConfiguration(IList<UserEntityPreventNotification> notifyConfigSave, IList<UserEntityPreventNotification> notifyConfigDelete)
+public bool ValidatePersonAddress(ref PersonAddress personAddress)
+{
+    if (personAddress != null)
     {
-      UserEntityPreventNotificationBusiness business = new UserEntityPreventNotificationBusiness();
-      try
-      {
-        business.SaveConfiguration(notifyConfigSave, notifyConfigDelete);
-        return Json(new { Completed = true, Message = "Alterações salvadas com sucesso" });
-      }
-      catch (Exception e)
-      {
-        return Json(new { Completed = false, e.Message });
-      }
+        if (personAddress.ZipCode == null && personAddress.PersonAddressType == null && personAddress.Street1 == null && personAddress.Street2 == null &&
+            personAddress.Number == null && personAddress.District == null && personAddress.Locality == null)
+        {
+            personAddress = null;
+            return false;
+        }
+        else
+        {
+            return true;
+        };
     }
+    else
+    {
+        return true;
+    }
+}
 ```
 
-## **Business**
+### Sessão em Classes
+
+O C\# Trabalha com sessão, mesmo em objetos. Se eu tenho um **`Billet originalBillet`** e um **`Billet billet`** e alterar a propriedade de um deles, o outro vai ser afetado, diferentemente do Javascript.
+
+Para resolver esse problema quando às vezes precisamos somente de uma cópia para realizar consultas, enfim, deve-se utilizar o Copy. Para uma classe utilizar o copy, deve-se implementar a interface IClonable do C\#.
+
+Para realizar uma cópia, basta inserir o código a seguir no objeto instanciado da mesma classe
+
+```csharp
+Billet originalBillet;
+originalBillet = billet.Clone() as Billet;
+```
+
+![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.54.png)
+
+![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.15.png)
+
+![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.39.png)
+
+### **Begin Transaction e Rollback Transaction**
 
 obs: Se o **`dataAccess.BeginTransaction();`** e o **`dataAccess.RollbackTransaction();`** estiverem dentro do **`foreach`**, eles ignoram apenas uma pessoa salva e não retornam erro. No exemplo abaixo está envolvendo todo o loop, ou seja, se der erro em um, vai parar a transação de todos.
 
@@ -111,26 +125,20 @@ obs: Se o **`dataAccess.BeginTransaction();`** e o **`dataAccess.RollbackTransac
     }
 ```
 
-## **Objetos em sessão**
+### Propriedades null/not null\(?\)
 
-O C\# Trabalha com sessão, mesmo em objetos. Se eu tenho um **`Billet originalBillet`** e um **`Billet billet`** e alterar a propriedade de um deles, o outro vai ser afetado, diferentemente do Javascript.
+ Se o .Locality no exemplo abaixo não for encontrado, vai gerar o seguinte erro: **`Object reference not set to an instance of an object.`**
 
-Para resolver esse problema quando às vezes precisamos somente de uma cópia para realizar consultas, enfim, deve-se utilizar o Copy. Para uma classe utilizar o copy, deve-se implementar a interface IClonable do C\#.
-
-Para realizar uma cópia, basta inserir o código a seguir no objeto instanciado da mesma classe
+Com ponto de **`?`** evitamos esse erro, pois trabalha tanto com o valor **`null`** quanto com o valor que não for **`null`**.
 
 ```csharp
-Billet originalBillet;
-originalBillet = billet.Clone() as Billet;
+Locality locality = BusinessFactory.Instance.GetEntityAddressBusiness()
+    .GetByEntityId(entity.Id)?.Locality;
 ```
 
-![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.54.png)
+### Dictionary c/ Group By
 
-![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.15.png)
-
-![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.39.png)
-
-## GROUP BY
+Exemplo de como podemos trabalhar o Group By com o Dictionary, pois dessa forma é mais fácil de trabalhar com o retorno do mesmo.
 
 ```csharp
 IAccountsPayableDocumentBusiness accounts = BusinessFactory.Instance.GetAccountsPayableDocumentBusiness();
@@ -174,7 +182,19 @@ IAccountsPayableDocumentBusiness accounts = BusinessFactory.Instance.GetAccounts
 }
 ```
 
-## Conversando entre dois projetos
+## 💰 Código AFS
+
+### Acessando Itens da Sessão
+
+É possível acessar propriedades da sessão atual e resgatar o seu valor quando necessário, evitando assim códigos maiores para a mesma busca.
+
+```csharp
+SessionBusiness.Current.SdaSystem
+```
+
+Salvando Corretamente utilizando Business e Rollback utilizando como exemplo UserEntityPreventNotificationBusiness.cs e RequestController.cs
+
+### Conversando entre dois projetos
 
 Quando dois projetos do AFS tentam se conversar e um dele dá um throw e for chamado em outro método, pode-se utilizar o **`try catch`** em volta daquele método para poder tratar a exceção da forma como desejar, ao invés de mostrar diretamente para o cliente
 
@@ -186,12 +206,68 @@ try {
 }
 ```
 
-## Relatório
+### Relatório
 
 Exibir ou esconder campos baseado no valor
 
 ```csharp
 =iif(IsNothing(Fields!YourField.Value),True,False)
+```
+
+### **Exemplo de Controller**
+
+Exemplo de Controller passando informações para a **`View`**
+
+```csharp
+public JsonResult SaveNotificationConfiguration(IList<UserEntityPreventNotification> notifyConfigSave, IList<UserEntityPreventNotification> notifyConfigDelete)
+    {
+      UserEntityPreventNotificationBusiness business = new UserEntityPreventNotificationBusiness();
+      try
+      {
+        business.SaveConfiguration(notifyConfigSave, notifyConfigDelete);
+        return Json(new { Completed = true, Message = "Alterações salvadas com sucesso" });
+      }
+      catch (Exception e)
+      {
+        return Json(new { Completed = false, e.Message });
+      }
+    }
+```
+
+### Tradução de Propriedade \(AFS\)
+
+Alterando a propriedade de um objeto quando receber um valor. Esse códiog traduz quando a classe for receber valores de alguma chamada que irá popular a classe, no caso em específico estamos realizando a tradução do mesmo através de um métood criado no próprio AFS de traduzir strings, porém o exemplo serve como modelo para quando for necessário realizar algo que seja parecido, como realizar alguma conta antes de atribuir o valor da propriedade, por exemplo.
+
+```csharp
+namespace Sda.Afs.Entities
+{
+    public partial class CollectionType
+    {
+        private string _Description;
+
+        [DataMember]
+        public virtual string Description
+        {
+            get
+            {
+                return this._Description.TranslateString();
+            }
+            set
+            {
+                _Description = value;
+            }
+        }
+    }
+}
+```
+
+## Model
+
+Se necessário passar um Model, aonde você sabe que será somente utilizado o Id dele na frente, instanciar um objeto do Model passando o Id que você já tem como propriedade. Isso irá gerar um Model com apenas o Id.
+
+```csharp
+Guid entityId = '2C6CA733-7D0F-416C-8D11-2E8C5F31E0CF'
+function foo(new Entity() { Id = entityId })
 ```
 
 ## Reflection
@@ -255,42 +331,10 @@ public class Program
 }
 ```
 
-## Instanciação de objeto com valores
+## Instanciação c/ Valores
 
 ```csharp
 Country = new Country { Code = "BR", Id = 1 }
-```
-
-## Referência \(ref\)
-
-Com a referência você pode enviar o objeto ques está sendo usado atualmente e alterar os valores do mesmo. Num método normal, se você fizesse isso ele não manteria as alterações assim que acabasse o método, porém como estamos passando a referência do mesmo objeto, as alterações serão significativas no mesmo.   
-  
-No caso abaixo está sendo verificado se o objeto e as propriedades do mesmo são nulo, se as propriedades forem nulas, então seta o objeto inteiro para nulo e continua normalmente. A diferença é que como foi passado como referência, o objeto que foi passado como parâmetro vai ficar nulo devido à alteração dentro do método. Deve-se usar **`ref`** com muita responsabilidade.
-
-```csharp
-//Chamando o método passando o objeto como diferente de null
-ValidatePersonAddress(ref personAddress)
-
-public bool ValidatePersonAddress(ref PersonAddress personAddress)
-{
-    if (personAddress != null)
-    {
-        if (personAddress.ZipCode == null && personAddress.PersonAddressType == null && personAddress.Street1 == null && personAddress.Street2 == null &&
-            personAddress.Number == null && personAddress.District == null && personAddress.Locality == null)
-        {
-            personAddress = null;
-            return false;
-        }
-        else
-        {
-            return true;
-        };
-    }
-    else
-    {
-        return true;
-    }
-}
 ```
 
 ## Formatando Máscaras Dinamicamente
@@ -350,7 +394,7 @@ string empty= "Lorem Ipsum";
 String.IsNullOrWhiteSpace(empty); //false
 ```
 
-## Filtrar somente números da string
+## Filtrar números de uma string
 
 ```csharp
 using System;
@@ -359,43 +403,5 @@ using System.Linq; //Importar para utilizar o .Where();
 string cpf = "337   98dsasaddas96489!@¨#%¨*@#%¨*@%¨!#%!&*@¨#¨&!@0";
 string teste = new string(cpf.Where(c => char.IsDigit(c)).ToArray());
 Console.WriteLine(teste); //"33798964890"
-```
-
-## Trabalhar com Propriedades que podem se nulas
-
- Se o .Locality não for encontrado, aparecerá o seguinte erro: **`Object reference not set to an instance of an object.`**
-
-Com ponto de **`?`** evitamos esse erro. Exemplo no código abaixo de como colocar o **`?`**
-
-```csharp
-Locality locality = BusinessFactory.Instance.GetEntityAddressBusiness()
-    .GetByEntityId(entity.Id)?.Locality;
-```
-
-## Alterando Propriedades - Tradução \(AFS\)
-
-Alterando a propriedade de um objeto quando receber um valor. Esse códiog traduz quando a classe for receber valores de alguma chamada que irá popular a classe, no caso em específico estamos realizando a tradução do mesmo através de um métood criado no próprio AFS de traduzir strings, porém o exemplo serve como modelo para quando for necessário realizar algo que seja parecido, como realizar alguma conta antes de atribuir o valor da propriedade, por exemplo.
-
-```csharp
-namespace Sda.Afs.Entities
-{
-    public partial class CollectionType
-    {
-        private string _Description;
-
-        [DataMember]
-        public virtual string Description
-        {
-            get
-            {
-                return this._Description.TranslateString();
-            }
-            set
-            {
-                _Description = value;
-            }
-        }
-    }
-}
 ```
 
