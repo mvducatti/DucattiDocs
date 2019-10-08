@@ -182,6 +182,83 @@ IAccountsPayableDocumentBusiness accounts = BusinessFactory.Instance.GetAccounts
 }
 ```
 
+### Recursividade
+
+Exemplo de método sendo trabalhado com recursividade para verificar em qual dos "parents" se encontra a informação requerida.
+
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+                    
+public class Program
+{
+    public static void Main()
+    {
+        var myEntity = new Entity
+        {
+            Id = 3,
+            Name = "Unasp Virtual",
+            Own = false,
+            Parent = new Entity
+            {
+                Id = 2,
+                Name = "UNASP",
+                Own = false,
+                Parent = new Entity
+                {
+                    Id = 1,
+                    Name = "UCB",
+                    Own = true,
+                    //Descomentar o código abaixo para fazer com que
+                    //o método encontre a informação
+                    //PaymentType = new List<string>(){ "Dinheiro", "Cheque" }
+                }
+            }
+        };
+        
+        var paymentTypeList = GetPaymentType(myEntity);
+        
+        if(paymentTypeList != null && paymentTypeList.Any())
+        {
+            Console.WriteLine("Exibir na tela opções");
+        }
+        else
+        {
+            Console.WriteLine("Não foi configurado");
+        }
+        
+    }
+    
+    public static List<string> GetPaymentType(Entity entity)
+    {
+        if(entity.Own)
+        {
+            Console.WriteLine(entity.Name);
+            return entity.PaymentType;
+        }   
+        else
+        {
+            if(entity.Parent != null)
+                return GetPaymentType(entity.Parent);
+            else
+                return null;
+        }
+    }
+    
+    
+    public class Entity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Entity Parent { get; set; }
+        public bool Own { get; set; }
+        public List<string> PaymentType { get; set; }
+    }
+}
+```
+
 ## 💰 Código AFS
 
 ### Acessando Itens da Sessão
