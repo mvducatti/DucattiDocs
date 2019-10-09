@@ -66,6 +66,8 @@ Ao contrário do SQL normal que você utiliza o nome literal das colunas no banc
 
 **obs:** Mesmo se você tiver uma classe de referência dentro da sua classe, deve ser feito um inner join
 
+Exemplo 1
+
 ```sql
 string hql = @" SELECT ct
                 FROM CollectionTypeCountry ctc
@@ -76,5 +78,21 @@ string hql = @" SELECT ct
 NHibernate.IQuery query = GetDefaultSession().CreateQuery(hql);
 query.SetParameter("CountryCode", countryCode);
 return query.List<CollectionType>();
+```
+
+Exemplo 2
+
+```csharp
+string hql = @" SELECT b
+                            FROM BasicConfiguration as b
+                            WHERE   b.Entity.Id = dbo.f_GetEntityFromBasicConfiguration(:EntityId,:SdaSystemId,:type)
+                                    and b.SdaSystem.Id = :SdaSystemId ";
+ 
+            var query = GetDefaultSession().CreateQuery(hql);
+            query.SetGuid("EntityId", entity.Id);
+            query.SetGuid("SdaSystemId", sdaSystem.Id);
+            query.SetString("type", type);
+ 
+            return query.UniqueResult<BasicConfiguration>();
 ```
 
