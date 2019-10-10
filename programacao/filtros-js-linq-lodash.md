@@ -2,18 +2,74 @@
 
 ## **LINQ C\#**
 
-### Trabalhando com 2 listas
+### Comparando Listas
 
 Retornando valores iguais
 
 ```csharp
-var foo = list1.Where(x => list2.Select(y => y.id).Contains(x.id));
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+                    
+public class Program
+{
+    public static void Main()
+    {
+		var list1 = new List<PaymentTypeClass>() { new PaymentTypeClass(1, "Dinheiro"), new PaymentTypeClass(2, "Cheque")};
+		var list2 = new List<PaymentTypeClass>() { new PaymentTypeClass(1, "Dinheiro")};
+		var listFinal = list1.Where(x => list2.Select(y => y.Id).Contains(x.Id));
+		
+		foreach (var item in listFinal) {
+			Console.WriteLine(item.Name);
+		}
+		
+	}
+	
+	public class PaymentTypeClass {
+		public int Id { get; set; }
+		public string Name { get; set; }
+		
+		public PaymentTypeClass(int id, string name){
+			this.Id = id;
+			this.Name = name;
+		}
+	}
+}
 ```
 
 Retornando valores diferentes
 
 ```csharp
-var foo = list1.Where(x => !list2.Select(y => y.id).Contains(x.id));
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+                    
+public class Program
+{
+    public static void Main()
+    {
+		var list1 = new List<PaymentTypeClass>() { new PaymentTypeClass(1, "Dinheiro"), new PaymentTypeClass(2, "Cheque")};
+		var list2 = new List<PaymentTypeClass>() { new PaymentTypeClass(1, "Dinheiro")};
+		var listFinal = list1.Where(x => !list2.Select(y => y.Id).Contains(x.Id));
+		
+		foreach (var item in listFinal) {
+			Console.WriteLine(item.Name);
+		}
+		
+	}
+	
+	public class PaymentTypeClass {
+		public int Id { get; set; }
+		public string Name { get; set; }
+		
+		public PaymentTypeClass(int id, string name){
+			this.Id = id;
+			this.Name = name;
+		}
+	}
+}
 ```
 
 ### SelectMany
