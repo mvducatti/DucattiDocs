@@ -338,6 +338,14 @@ namespace Sda.Afs.Entities
 }
 ```
 
+### DataFactory
+
+Alternativa para acessar o Data dentro do próprio data sem necessidade de  instanciação
+
+```csharp
+DataFactory.Instance.GetAccountingItemData.GetAll();
+```
+
 ## Model
 
 Se necessário passar um Model, aonde você sabe que será somente utilizado o Id dele na frente, instanciar um objeto do Model passando o Id que você já tem como propriedade. Isso irá gerar um Model com apenas o Id.
