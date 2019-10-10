@@ -2,7 +2,7 @@
 
 ## **LINQ C\#**
 
-### Comparando Listas
+### Comparando Listas de Tipos Diferentes
 
 Retornando valores iguais
 
@@ -70,6 +70,20 @@ public class Program
 		}
 	}
 }
+```
+
+### Comparando Listas de Tipos Iguais
+
+Retornando valores diferentes
+
+```csharp
+var resultado = lista1.Except(lista2).ToList();
+```
+
+Retornando valores iguais
+
+```csharp
+var resultado = lista1.Contains(lista2).ToList();
 ```
 
 ### SelectMany
