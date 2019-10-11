@@ -12,4 +12,5 @@
   * [AngularJS](programacao/angularjs.md)
   * [C\#](programacao/c.md)
 * [Kanban](kanban.md)
+* [CodeLab](codelab.md)
 
