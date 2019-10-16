@@ -46,3 +46,55 @@ mas pode ser usado no html
 {{numero.format('c')}}
 ```
 
+## Popups
+
+Exemplo completo de um Popup e suas propriedades
+
+```coffeescript
+$.popup({
+    title: Strings.Attention,
+    content: Strings.ThisProcedureWillNotGenerateADeliveryFileDoYouWantToRegisterThePayment,
+    type: 'warning',
+    isModal: true,
+    isDragabble: false,
+    isResizable: false,
+    isCloseable: true,
+    minHeight: 200,
+    minWidth: 400,
+    //type: 'warning',
+    okFunction: function () {
+        $.popup.close();
+
+        var params = SelectData();
+        if (!params)
+            return params;
+
+        $.ajax({
+            type: "POST",
+            url: "/AccountsPayable/Payments/RegisterPaymentBank",
+            data: $.postify(params)
+        }).done(function (result) {
+            if (result) {
+                $.notify(Strings.PaymentSuccessfullyRegistered, "success");
+                window.location.href = '/AccountsPayable/Payments';
+                $.busy(true);
+            }
+        });
+    },
+    cancelFunction: function () {
+        $.popup.close();
+    }
+});
+}
+```
+
+Exemplo de um Popup chamando um modal da tela
+
+```coffeescript
+$.popup({
+    title: Strings.CloneConfiguration,
+    content: $(".popup-new-letterhead"),
+    width: "615px"
+});
+```
+
