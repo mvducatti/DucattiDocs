@@ -59,8 +59,12 @@ $.popup({
     isDragabble: false,
     isResizable: false,
     isCloseable: true,
+    closeOnEscape: false,
     minHeight: 200,
     minWidth: 400,
+    onClose: function () {
+        TotalValueRefresh();
+    }
     //type: 'warning',
     okFunction: function () {
         $.popup.close();
