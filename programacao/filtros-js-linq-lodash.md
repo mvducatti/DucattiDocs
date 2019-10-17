@@ -123,6 +123,12 @@ _.filter(result, function(item){
 })
 ```
 
+## Some - Booleano
+
+```coffeescript
+_.some(scopeGeneral.letterheadList, { 'Active': true, 'SerieType': obj.SerieType })
+```
+
 ## JAVASCRIPT
 
 ### Comparar duas listas e retornar booleano se são iguais ou não

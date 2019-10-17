@@ -9,6 +9,7 @@
   * [HTML](programacao/html.md)
   * [Filtros JS, LINQ, Lodash](programacao/filtros-js-linq-lodash.md)
   * [Relatórios](programacao/relatorios.md)
+  * [Javascript](programacao/javascript.md)
   * [AngularJS](programacao/angularjs.md)
   * [C\#](programacao/c.md)
 * [Kanban](kanban.md)
