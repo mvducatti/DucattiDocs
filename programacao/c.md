@@ -259,6 +259,20 @@ public class Program
 }
 ```
 
+### Enviando Parâmetros Alternativa
+
+Dessa forma \(igual no Dart\), podemos declarar o nome da propriedade que é um parâmetro para visualizar melhor para onde estamos enviando os dados. Muito útil quando temos apenas `fun(true)`, no caso poderia ser alterado para `fun(isAtive: true)`
+
+```csharp
+//Chamando o método
+IList<SerieModel> serieList = client.GetById(entityIdExternal: entityIdExternal);
+
+//Método
+public IList<SerieModel> GetById (Guid entityIdExternal) {
+...
+}
+```
+
 ## 💰 Código AFS
 
 ### Acessando Itens da Sessão
