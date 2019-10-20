@@ -21,3 +21,17 @@ Dessa forma quando o parâmetro é enviado ele cria a propriedade com o nome do 
 $.postify({ entityIdExternal})
 ```
 
+## Converter TimeStamp
+
+Essa função é global no projeto do AFS, basta chamar diretamente.
+
+```coffeescript
+function convertToDate1(param) {
+    if (param.substring(10, 19) === "T00:00:00")
+        return new Date(param);
+    if (!!param && !angular.isDate(param)) 
+        return new Date(parseInt(param.substring(6, 24)));
+    return param;
+}
+```
+
