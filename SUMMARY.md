@@ -14,4 +14,5 @@
   * [C\#](programacao/c.md)
 * [Kanban](kanban.md)
 * [CodeLab](codelab.md)
+* [AFS - Paraguay](afs-paraguay.md)
 
