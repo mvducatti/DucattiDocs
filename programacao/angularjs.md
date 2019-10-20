@@ -102,3 +102,39 @@ $.popup({
 });
 ```
 
+## Datime
+
+Para ver outra opção de conversão, ver na página de Javascript.
+
+{% page-ref page="javascript.md" %}
+
+Quando a data vier no estilo  `.replace('/Date(','').replace(')/','')`
+
+```coffeescript
+{{obj.FinalEffectiveDate.replace('/Date(','').replace(')/','') | date:'dd/MM/yyyy'}}
+```
+
+Quando a data vier no estilo `2019/12/11` ou `12/24/2019`
+
+```coffeescript
+{{obj.FinalEffectiveDate | date:'dd/MM/yyyy'}}
+```
+
+Quando tiver que converter a data para UTC utilizando o método   
+**obs:** Utilizar em último caso, nesse caso a data de timestamp estava vindo com um dia a menos, então teve que buscar diretamente as propriedades.
+
+```coffeescript
+let utcInitialDate = convertToDate(element.InitialEffectiveDate);
+let utcFinalDate = convertToDate(element.FinalEffectiveDate);
+element.InitialEffectiveDate = new Date(
+    utcInitialDate.getUTCFullYear(), 
+    utcInitialDate.getUTCMonth(), 
+    utcInitialDate.getUTCDate()
+);
+element.FinalEffectiveDate = new Date(
+    utcFinalDate.getUTCFullYear(), 
+    utcFinalDate.getUTCMonth(), 
+    utcFinalDate.getUTCDate()
+);
+```
+
