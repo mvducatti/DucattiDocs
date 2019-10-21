@@ -138,3 +138,22 @@ element.FinalEffectiveDate = new Date(
 );
 ```
 
+## Comparando Dates em String
+
+Quando as datas vierem no formato dd/MM/yyyy e você quiser comparar se uma é maior que a outra, basta verificar criando o método abaixo. Ele criar duas datas a partir das informações da string e compara.
+
+```coffeescript
+scopeGeneral.compareDateString = function (inititalDate, finalDate) {
+ 
+ const iniDay = inititalDate.substr(0, 2)
+ const iniMonth = inititalDate.substr(3, 2)
+ const iniYear = inititalDate.substr(6, 4)
+
+ const fnDay = finalDate.substr(0, 2)
+ const fnMonth = finalDate.substr(3, 2)
+ const fnYear = finalDate.substr(6, 4)
+ 
+ return new Date(iniYear, iniMonth - 1, iniDay) > new Date(fnYear, fnMonth - 1, fnDay)
+}
+```
+
