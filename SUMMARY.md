@@ -12,6 +12,7 @@
   * [Javascript](programacao/javascript.md)
   * [AngularJS](programacao/angularjs.md)
   * [C\#](programacao/c.md)
+  * [Documentação](programacao/documentacao.md)
 * [Kanban](kanban.md)
 * [CodeLab](codelab.md)
 * [AFS - Paraguay](afs-paraguay.md)
