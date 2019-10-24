@@ -96,3 +96,32 @@ string hql = @" SELECT b
             return query.UniqueResult<BasicConfiguration>();
 ```
 
+## Trabalhando com Transactions
+
+Você pode dar nome à uma transaction, selecionar o código excluindo a linha de rollback, testar no ambiente o que precisa ser testado e após isso dar rollback na mesma transaction, assim fica uma forma fácil, limpa e segura de testar os scripts.
+
+```sql
+begin transaction PaymentTypeTransactionUpdate
+
+set xact_abort on
+
+delete from BasicConfigurationPaymentType
+
+DECLARE @cnt INT = 1;
+
+WHILE @cnt <= 12
+BEGIN
+	insert into BasicConfigurationPaymentType
+	select bc.BasicConfigurationId, @cnt from BasicConfiguration bc
+	inner join Entity e on e.EntityId = bc.EntityId
+	where e.CountryId = 1
+   SET @cnt = @cnt + 1;
+END;
+
+select * from BasicConfigurationPaymentType
+
+rollback transaction PaymentTypeTransactionUpdate
+
+--SELECT * FRom PaymentType
+```
+
