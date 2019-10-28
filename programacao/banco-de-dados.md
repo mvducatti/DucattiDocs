@@ -68,7 +68,7 @@ Ao contrário do SQL normal que você utiliza o nome literal das colunas no banc
 
 Exemplo 1
 
-```sql
+```csharp
 string hql = @" SELECT ct
                 FROM CollectionTypeCountry ctc
                 INNER JOIN ctc.CollectionType ct
