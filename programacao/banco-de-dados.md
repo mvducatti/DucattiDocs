@@ -125,3 +125,14 @@ rollback transaction PaymentTypeTransactionUpdate
 --SELECT * FRom PaymentType
 ```
 
+## Cast
+
+Quando for necessário realizar uma conversão de valores para inserir um dado novo no banco de dados podemos usar o CAST
+
+```sql
+INSERT INTO MoneyReport values (
+    CAST('255,55' AS MONEY), 
+    CAST('0x00D1CCE9771AE7554D4...' as varbinary)
+)
+```
+
