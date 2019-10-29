@@ -360,6 +360,44 @@ Alternativa para acessar o Data dentro do próprio data sem necessidade de  inst
 DataFactory.Instance.GetAccountingItemData.GetAll();
 ```
 
+## 🎡HQL, ICriteria, etc...
+
+### Consulta com HQL \(C\#\)
+
+Ao contrário do SQL normal que você utiliza o nome literal das colunas no banco, no HQL os nomes das colunas são os mesmos utilizados e mapeados dentro da classe do C\#.
+
+**obs:** Mesmo se você tiver uma classe de referência dentro da sua classe, deve ser feito um inner join
+
+Exemplo 1
+
+```csharp
+string hql = @" SELECT ct
+                FROM CollectionTypeCountry ctc
+                INNER JOIN ctc.CollectionType ct
+                INNER JOIN ctc.Country c
+                WHERE c.Code = :CountryCode";
+
+NHibernate.IQuery query = GetDefaultSession().CreateQuery(hql);
+query.SetParameter("CountryCode", countryCode);
+return query.List<CollectionType>();
+```
+
+Exemplo 2
+
+```csharp
+string hql = @" SELECT b
+                            FROM BasicConfiguration as b
+                            WHERE   b.Entity.Id = dbo.f_GetEntityFromBasicConfiguration(:EntityId,:SdaSystemId,:type)
+                                    and b.SdaSystem.Id = :SdaSystemId ";
+ 
+            var query = GetDefaultSession().CreateQuery(hql);
+            query.SetGuid("EntityId", entity.Id);
+            query.SetGuid("SdaSystemId", sdaSystem.Id);
+            query.SetString("type", type);
+ 
+            return query.UniqueResult<BasicConfiguration>();
+```
+
 ## Model
 
 Se necessário passar um Model, aonde você sabe que será somente utilizado o Id dele na frente, instanciar um objeto do Model passando o Id que você já tem como propriedade. Isso irá gerar um Model com apenas o Id.
