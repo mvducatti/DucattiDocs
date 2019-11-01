@@ -35,3 +35,21 @@ function convertToDate1(param) {
 }
 ```
 
+## Enviando QueryString
+
+```coffeescript
+function SaveNfse(apdId) {
+  $.popup({
+    title: Strings.Attention,
+    content: "Salvo com sucesso. Deseja visualizar?",
+    okFunction: function () {
+      window.open(`/AccountsPayable/Scheduling?accountsPayableDocumentId=${apdId}?tab=${2}`, '_blank');
+      $.popup.close();
+    },
+    cancelFunction: function () {
+      $.popup.close();
+    }
+  });
+}
+```
+

@@ -1,6 +1,4 @@
-# Documentação
-
-## Contabilização
+# Contabilização
 
 **TL;DR** A contabilização nada mais é que a distribuição do dinheiro recebido para contas em específico.
 
