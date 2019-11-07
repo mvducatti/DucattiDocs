@@ -1,6 +1,6 @@
 # Conceitos Avançados
 
-### Override
+## Override
 
 Para poder dar override em métodos no C\#, o método ou objeto deve estar setado como
 
@@ -8,7 +8,7 @@ Para poder dar override em métodos no C\#, o método ou objeto deve estar setad
 virtual
 ```
 
-### Polimorfismo
+## Polimorfismo
 
 [https://pt.wikipedia.org/wiki/Polimorfismo\_\(inform%C3%A1tica\)](https://pt.wikipedia.org/wiki/Polimorfismo_%28inform%C3%A1tica%29)
 
@@ -33,7 +33,7 @@ foreach (object[] item in result){
 }
 ```
 
-### Referência \(ref\)
+## Referência \(ref\)
 
 Com a referência você pode enviar o objeto ques está sendo usado atualmente e alterar os valores do mesmo. Num método normal, se você fizesse isso ele não manteria as alterações assim que acabasse o método, porém como estamos passando a referência do mesmo objeto, as alterações serão significativas no mesmo.   
   
@@ -65,7 +65,7 @@ public bool ValidatePersonAddress(ref PersonAddress personAddress)
 }
 ```
 
-### Sessão em Classes
+## Sessão em Classes
 
 O C\# Trabalha com sessão, mesmo em objetos. Se eu tenho um **`Billet originalBillet`** e um **`Billet billet`** e alterar a propriedade de um deles, o outro vai ser afetado, diferentemente do Javascript.
 
@@ -84,7 +84,7 @@ originalBillet = billet.Clone() as Billet;
 
 ![](https://s3.amazonaws.com/notejoy/note_images/248985.1.Image%202019-05-09%20at%2009.22.39.png)
 
-### **Begin Transaction e Rollback Transaction**
+## **Begin Transaction e Rollback Transaction**
 
 obs: Se o **`dataAccess.BeginTransaction();`** e o **`dataAccess.RollbackTransaction();`** estiverem dentro do **`foreach`**, eles ignoram apenas uma pessoa salva e não retornam erro. No exemplo abaixo está envolvendo todo o loop, ou seja, se der erro em um, vai parar a transação de todos.
 
@@ -123,7 +123,7 @@ obs: Se o **`dataAccess.BeginTransaction();`** e o **`dataAccess.RollbackTransac
     }
 ```
 
-### Propriedades null/not null\(?\)
+## Propriedades null/not null\(?\)
 
  Se o .Locality no exemplo abaixo não for encontrado, vai gerar o seguinte erro: **`Object reference not set to an instance of an object.`**
 
@@ -134,7 +134,7 @@ Locality locality = BusinessFactory.Instance.GetEntityAddressBusiness()
     .GetByEntityId(entity.Id)?.Locality;
 ```
 
-### Dictionary c/ Group By
+## Dictionary c/ Group By
 
 Exemplo de como podemos trabalhar o Group By com o Dictionary, pois dessa forma é mais fácil de trabalhar com o retorno do mesmo.
 
@@ -180,7 +180,7 @@ IAccountsPayableDocumentBusiness accounts = BusinessFactory.Instance.GetAccounts
 }
 ```
 
-### Recursividade
+## Recursividade
 
 Exemplo de método sendo trabalhado com recursividade para verificar em qual dos "parents" se encontra a informação requerida.
 
@@ -257,7 +257,7 @@ public class Program
 }
 ```
 
-### Enviando Parâmetros Alternativa
+## Enviando Parâmetros Alternativa
 
 Dessa forma \(igual no Dart\), podemos declarar o nome da propriedade que é um parâmetro para visualizar melhor para onde estamos enviando os dados. Muito útil quando temos apenas `fun(true)`, no caso poderia ser alterado para `fun(isAtive: true)`
 
@@ -269,5 +269,89 @@ IList<SerieModel> serieList = client.GetById(entityIdExternal: entityIdExternal)
 public IList<SerieModel> GetById (Guid entityIdExternal) {
 ...
 }
+```
+
+## Instâncias nos Testes
+
+Quando for realizar algum teste, lembrar que se você está criando mocks e passando parâmetros e no meio do processo existe um método que utiliza o parâmetro, porém o mesmo sofreu alguma alteração no caminho \(por exemplo, list.Select\(\).toarray\(\)\) ele altera a referência do objeto e o mesmo não é encontrado. 
+
+### 🤦‍♂️ Forma Errada de Fazer
+
+Não enviando a lista de batchs no método .SalesAccounting e alterando o parâmetro recebido em .CreateJournalToSave através de salesTransactions.Select\(...\).ToArray\(\). Ao fazer isso, a instância de batch recebida no .CreateJournalToSave foi alterada, e para o teste funcionar a instância tem que ser a mesma.
+
+```csharp
+//================= CLASSE DE TESTE ==================//
+
+//Models Mock
+IList<Batch> batches = new List<Batch>() { 
+    new Batch() { 
+        Id = new Guid("8CB8848D-00D3-46F5-B58C-91E768E542E3") 
+    } 
+};
+            
+//Setando mock - Método 1
+mockCardPaymentInfoBusiness
+.Setup(x => x.CreateJournalToSave(batches, accountingMonth, String.Empty))
+.Returns(journalToSave);
+
+// Act - Método 1
+cardPaymentInfoServices.SalesAccounting(legalEntity, date, 
+legalEntityConfigurationAccountingConfig, legalEntityConfigurationAccountingConfig,
+salesTransaction, String.Empty);
+
+//================= MÉTODO PRINCIPAL =======================//
+
+//Alterando o valor através de LINQ - Método 2
+IList<Batch> batchList = salesTrasactions
+    .Select(c => c.Batch)
+    .GroupBy(p => p.Id)
+    .Select(g => g.First())
+    .ToArray();
+    
+//Recebendo o valor de batch - Método 2
+Dictionary<Guid, Journal> journalToSave = 
+this.cardPaymentInfoBusiness.CreateJournalToSave(batchList, accountingMonth, 
+username);
+```
+
+### 🙆‍♂️ Forma Certa de Fazer
+
+Realizar o LINQ fora do método principal e receber o batch como parâmetro. No metodo de teste, o mesmo batch que utilizar para fazer o Setup, vai ser o mesmo ao passar como parâmetro no método principal.
+
+```csharp
+//================ BUSINESS ==========================//
+
+//Business
+IList<Batch> batchList = salesTrasactions
+    .Select(c => c.Batch)
+    .GroupBy(p => p.Id)
+    .Select(g => g.First())
+    .ToArray();
+
+//================= CLASSE DE TESTE ==================//
+
+//Models Mock
+IList<Batch> batches = new List<Batch>() { 
+    new Batch() { 
+        Id = new Guid("8CB8848D-00D3-46F5-B58C-91E768E542E3") 
+    } 
+};
+
+//Setando mock - Método 1
+mockCardPaymentInfoBusiness
+.Setup(x => x.CreateJournalToSave(batches, accountingMonth, String.Empty))
+.Returns(journalToSave);
+
+// Act - Método 1
+cardPaymentInfoServices.SalesAccounting(legalEntity, date, batches,
+legalEntityConfigurationAccountingConfig, legalEntityConfigurationAccountingConfig,
+salesTransaction, String.Empty);
+    
+//================= MÉTODO PRINCIPAL =======================//
+    
+//Recebendo o valor de batch - Método 2
+Dictionary<Guid, Journal> journalToSave = 
+this.cardPaymentInfoBusiness.CreateJournalToSave(batchList, accountingMonth, 
+username);
 ```
 
