@@ -53,3 +53,17 @@ function SaveNfse(apdId) {
 }
 ```
 
+## Remover Zeros à Esquerda
+
+```coffeescript
+teste = "0001234"
+teste.replace(/^0+/, '')
+//"1234"
+```
+
+## Formatar CNPJ
+
+```coffeescript
+cpnj.split('.').join("").split('/').join("").split('-').join("");
+```
+

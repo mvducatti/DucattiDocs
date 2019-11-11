@@ -157,3 +157,17 @@ scopeGeneral.compareDateString = function (inititalDate, finalDate) {
 }
 ```
 
+## Foreach \(Nested Loop\)
+
+```coffeescript
+angular.forEach($scope.entityNotifyConfigList, function (value) {
+  angular.forEach(result, function (value2) {
+    if (value.Entity.Id === value2.Entity.Id) {
+      value.checked = false;
+      value.Id = value2.Id;
+      value.UserName = value2.UserName;
+    }
+  });
+});
+```
+
