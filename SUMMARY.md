@@ -12,6 +12,7 @@
   * [Manipulação de Dados](programacao/filtros-js-linq-lodash.md)
   * [Javascript](programacao/javascript.md)
   * [AngularJS](programacao/angularjs.md)
+  * [JQuery](programacao/jquery.md)
 * [Kanban](kanban.md)
 * [CodeLab](codelab.md)
 * [Git](git.md)
