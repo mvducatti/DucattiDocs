@@ -21,4 +21,5 @@
   * [Scripts Úteis](banco-de-dados/scripts.md)
 * [Documentação](documentacao/README.md)
   * [Contabilização](documentacao/contabilizacao.md)
+* [Visual Studio](visual-studio.md)
 
