@@ -24,16 +24,16 @@ Exemplo 2
 
 ```csharp
 string hql = @" SELECT b
-                            FROM BasicConfiguration as b
-                            WHERE   b.Entity.Id = dbo.f_GetEntityFromBasicConfiguration(:EntityId,:SdaSystemId,:type)
+                FROM BasicConfiguration as b
+                WHERE b.Entity.Id = dbo.f_GetEntityFromBasicConfiguration(:EntityId,:SdaSystemId,:type)
                                     and b.SdaSystem.Id = :SdaSystemId ";
  
-            var query = GetDefaultSession().CreateQuery(hql);
-            query.SetGuid("EntityId", entity.Id);
-            query.SetGuid("SdaSystemId", sdaSystem.Id);
-            query.SetString("type", type);
- 
-            return query.UniqueResult<BasicConfiguration>();
+var query = GetDefaultSession().CreateQuery(hql);
+query.SetGuid("EntityId", entity.Id);
+query.SetGuid("SdaSystemId", sdaSystem.Id);
+query.SetString("type", type);
+
+return query.UniqueResult<BasicConfiguration>();
 ```
 
 ## **LINQ**
