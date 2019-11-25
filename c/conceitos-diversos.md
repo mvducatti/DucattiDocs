@@ -144,3 +144,11 @@ string teste = new string(cpf.Where(c => char.IsDigit(c)).ToArray());
 Console.WriteLine(teste); //"33798964890"
 ```
 
+## ToString\(""\)
+
+Você pode alterar dentro do método ToString\(\), como visto no exemplo abaixo.
+
+```csharp
+birthdate.toString("dd-MM-yyyy")
+```
+
