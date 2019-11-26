@@ -23,5 +23,4 @@
   * [Contabilização](documentacao/contabilizacao.md)
 * [Visual Studio](visual-studio.md)
 * [Workspaces - Links](workspaces-links.md)
-* [Scripts](scripts.md)
 
