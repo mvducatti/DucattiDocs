@@ -53,3 +53,7 @@ Since the calculation methods associated with the DateTime value type never impa
 
 {% embed url="https://stackoverflow.com/questions/1201378/how-does-datetime-touniversaltime-work" %}
 
+## Working with DateTime in ASP.NET Web API
+
+{% embed url="https://carolynvanslyck.com/blog/2012/08/webapi-datetime/" %}
+
