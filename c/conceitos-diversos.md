@@ -152,3 +152,52 @@ Você pode alterar dentro do método ToString\(\), como visto no exemplo abaixo.
 birthdate.toString("dd-MM-yyyy")
 ```
 
+## Casts
+
+> Because C\# is statically-typed at compile time, after a variable is declared, it cannot be declared again or assigned a value of another type unless that type is implicitly convertible to the variable's type. For example, the `string` cannot be implicitly converted to `int`. Therefore, after you declare `i` as an `int`, you cannot assign the string "Hello" to it, as the following code shows
+>
+> [https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/casting-and-type-conversions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/casting-and-type-conversions)
+
+```csharp
+# Exemplos comuns de cast
+//Primeira forma
+(int)v (string)w (double)x (decimal)y (bool)z
+//Segunda forma
+v as int w as string x as double y as decimal z as bool
+```
+
+```csharp
+# Exemplos avançados de cast
+
+## Neste exemplo existe uma função que recebe uma data nulável
+## Dependendo dos métodos utilizados dentro do DateTime, pdoe gerar erro de 
+## cast para o parâmetro passado
+
+## Abaixo será mostrar uma forma errada e a forma correta de realizar a conversão
+
+//Função principal
+GetSerieListByFilter(DateTime? myDate = null)
+
+//Varíavel de tempo
+DateTime y = DateTime().Now();
+
+//Chamando a função e passando a variável
+
+## Forma Errada ❌
+foo.GetSerieListByFilter(
+    myDate: y.HasValue ? y.Value.ToUniversalTime() : null
+);
+
+## Forma Correta ✔
+foo.GetSerieListByFilter(
+    myDate: y.HasValue ? (DateTime?)y.Value.ToUniversalTime() : null
+);
+
+## Vai dar erro, porque ToUniversalTime() devolve um DateTime e 
+## esperado é um 'DateTime?', nesse caso podemos converter
+## 'y.Value.ToUniversalTime()' DateTime? com o cast (DateTime?) 
+
+##Conclusão
+//Podemos converter classes e tipos além dos tradicionais string, int, ...
+```
+
