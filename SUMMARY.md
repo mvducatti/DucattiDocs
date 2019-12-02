@@ -8,7 +8,7 @@
   * [Específico AFS](c/especifico-afs.md)
   * [Consultas de Dados](c/consultas-de-dados.md)
   * [Relatórios](c/relatorios.md)
-  * [API - ASP.NET Core](c/api-asp.net-core.md)
+  * [API - Entity Framework](c/api-asp.net-core.md)
 * [Front-end \(HTML/JS\)](programacao/README.md)
   * [CSS Tricks](programacao/html.md)
   * [Manipulação de Dados](programacao/filtros-js-linq-lodash.md)
