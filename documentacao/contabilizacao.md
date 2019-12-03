@@ -8,3 +8,15 @@
 4. JournalItem por sua vez vão conter os dados das contas e os valores a serem depositados \(**porém sem ligação no banco com o AccountItem, isso é feito no C\#**\). Os valores vem do objetos a serem contabilizados.
 5. Os objetos a serem contabilizados se relacionarão com a tabela Journal. Caso null o é porque o item do objeto ainda não foi contabilizado, senão é porque já ocorreu a contabilização \(**ex de objetos a serem contabilizados: CurrentAccount, TransactionAfs...**\).
 
+## Estrutura da Contabilização
+
+TransactionAfs
+
+* TrabsadtionDetail
+* ParcelDetail
+* Parcel
+* SaleProduct
+* Product
+* ART, ServiceGroup \(caixa pega somente pela entidade legal. As contas de crédito/débito vais para contas de caixa, as contas de débito/crédito vão pro accounts receivable type ou service group\)
+* AccountingItem
+
