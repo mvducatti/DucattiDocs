@@ -14,7 +14,7 @@ Batch é o caixa que recebeu as transações durante o período que esteve abert
 
 * Batch \(Caixa\)
 * TransactionAfs
-* TrabsadtionDetail
+* TransactionDetail
 * ParcelDetail
 * Parcel
 * SaleProduct
