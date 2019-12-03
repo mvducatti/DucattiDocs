@@ -2,7 +2,7 @@
 
 ## Desfazendo Commits
 
-![](.gitbook/assets/image%20%284%29.png)
+![](.gitbook/assets/image.png)
 
 ```coffeescript
 git reset -- soft HEAD~1

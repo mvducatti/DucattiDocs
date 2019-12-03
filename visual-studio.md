@@ -8,5 +8,5 @@ Você pode linkar seus commits diretamente em suas Tasks/Features/UserStories no
 
 Se por acaso não aparecer a opção, é porque o Visual Studio as vezes desconecta, para reconectar, basta gerenciar nova conexão e selecionar o projeto Sda.AFS.
 
-![Conectando novamente no projeto](.gitbook/assets/image%20%286%29.png)
+![Conectando novamente no projeto](.gitbook/assets/image%20%282%29.png)
 

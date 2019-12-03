@@ -2,6 +2,10 @@
 
 ## Migration
 
+![No Visual Studio, entre no caminho abaixo](../.gitbook/assets/image%20%281%29.png)
+
+![Nesse caso, selecione o Sda.Abacom.Py.Infrasctructure](../.gitbook/assets/image%20%286%29.png)
+
 Cria o script de migração pra adicionar no banco 
 
 ```c
