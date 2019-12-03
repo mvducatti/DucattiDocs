@@ -10,13 +10,15 @@
 
 ## Estrutura da Contabilização
 
-TransactionAfs
+Batch é o caixa que recebeu as transações durante o período que esteve aberto, então quando fechar o caixa, vão existir diversos Transactions para aquele Batch específico. Dentro de cada TransactionAfs vai existir do detalhe da transação \(TransactionDetail\)...
 
+* Batch \(Caixa\)
+* TransactionAfs
 * TrabsadtionDetail
 * ParcelDetail
 * Parcel
 * SaleProduct
 * Product
-* ART, ServiceGroup \(caixa pega somente pela entidade legal. As contas de crédito/débito vais para contas de caixa, as contas de débito/crédito vão pro accounts receivable type ou service group\)
+* ART, ServiceGroup \(caixa pega somente pela entidade legal. As contas de crédito/débito vai para contas de caixa, as contas de débito/crédito vão pro accounts receivable type ou service group\)
 * AccountingItem
 
