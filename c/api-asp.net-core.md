@@ -52,6 +52,8 @@ As vezes podemos carregar ou não no Specification o objeto completo, mesmo que 
 
 Um erro comum é que se estiver criando um Objeto no Model, por exemplo Services na linha 17 e vier nulo do Specificatione não estiver validado, vai voltar nulo sempre. Para poder descobrir se essa verificação é necessário ou não, tem que ver o contexto de cada Specification e falar com o analista sobre as possibilidades de quando não for necessário trazer alguma objeto ou propriedade e fazer as verificações necessárias de null.
 
+**obs: Fazer a verificação somente com Objetos complexos \(classes\), não é necessário fazer com propriedades normais, ex: decimal, etc...**
+
 ### Exemplo de Mapeamento
 
 ```csharp
@@ -81,6 +83,10 @@ CreateMap<PrintedInvoice, PrintedInvoiceModel>()
 
 No exemplo abaixo estamos dizendo que queremos que os objetos Services e Invoice venham preenchidos, então a regra acima de verificar se está nulo não necessariamente seria necessária, porém se você tiver criado uma nova consulta que não traga esses objetos ou não traga um deles, deve ser editado o mapeamento acima, pois o mesmo tem que se adaptar aos Scpeficiations criados pelo usuário ou pelas queries criadas pelo mesmo fora do Specifications \(query com LINQ\).  
 
+**obs: O Specification deve ser somente criado se a propriedade for bastante utilizada, senão a mesma pode ser apena incluída quando for realizada uma query normal sem o uso do Specification**
+
+#### Exemplo de Specification
+
 ```csharp
 namespace Sda.Abacom.Py.Domain.Specifications
 {
@@ -93,6 +99,14 @@ namespace Sda.Abacom.Py.Domain.Specifications
         }
     }
 }
+```
+
+#### Exemplo de Include
+
+```csharp
+PrintedInvoice printedInvoice = await repositoryPrintedInvoice
+                .Query(include: x => x.Include(x => x.Services))
+                .FirstOrDefaultAsync(x => x.InvoiceId == id);
 ```
 
 ### Exemplo de consulta com LINQ
