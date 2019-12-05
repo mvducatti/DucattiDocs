@@ -109,6 +109,14 @@ PrintedInvoice printedInvoice = await repositoryPrintedInvoice
                 .FirstOrDefaultAsync(x => x.InvoiceId == id);
 ```
 
+utilizando ThenInclude\(\) para preencher
+
+```csharp
+PrintedInvoice printedInvoice = await repositoryPrintedInvoice
+                .Query(include: x => x.Include(x => x.Services))
+                .FirstOrDefaultAsync(x => x.InvoiceId == id);
+```
+
 ### Exemplo de consulta com LINQ
 
 Igual as consultas realizadas no AFS, porém ao invés de utilizar SQL, HQL e Criteria, é utilizado o LINQ.
