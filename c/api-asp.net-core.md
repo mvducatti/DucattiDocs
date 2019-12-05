@@ -159,6 +159,14 @@ namespace Sda.Abacom.Py.Domain.Entities
 }
 ```
 
+#### **Observações**
+
+**TL;DR:** Se eu tenho y dentro de x **\(x =&gt; y\)** e y é uma inserção nova, dentro buscar y a partir do Id fornecido e preencher o model a ser salvo, senão o Entity vai entender que o y também vai ser um objeto novo e vai dar erro porque o Id já existe. Se eu tenho z dentro de y dentro de x **\(x =&gt; y =&gt; z\)** e y também é uma inserção nova, porém o z já deve existir, devo carregar o objeto z para não dar o erro comentado anteriormente. Se nenhum deles já deve existir previamente, não há necessidade de buscar no banco porque n\]ap vai encontrar niguém 🤠
+
+Ao tentar salvar, você tem que carregar os objeto dentro dessa classe. No exemplo acima deverá ser carregado o Invoice. Isso porque, como explicado anteriormente, mostra o relacionamento de tabelas e se o objeto não for carregado, o Entity vai entender que está sendo criado um novo objeto \(isso quando por exemplo, para criar um PrintedInvoice já deve existir um Invoice, por isso foi carregado\). Isso funciona sucessivamente para classes e sub-classes.
+
+ex: Se um InvoiceRebate tiver que ser criado, a classe Serie dentro dele tem que ser buscado. Agora se a classe Serie também for nova \(por regra de negócio\), deve-se buscar a classe Entity dentro da mesma e assim sucessivamente.
+
 ### Models
 
 Models são a representação do que vai ser apresentado ao cliente.
