@@ -167,6 +167,21 @@ Ao tentar salvar, você tem que carregar os objeto dentro dessa classe. No exemp
 
 ex: Se um InvoiceRebate tiver que ser criado, a classe Serie dentro dele tem que ser buscado. Agora se a classe Serie também for nova \(por regra de negócio\), deve-se buscar a classe Entity dentro da mesma e assim sucessivamente.
 
+Deve-se também, se fizer mudanças em algum objeto, salvar as mudanças antes de salvar o objeto principal, senão o banco vai entender que está sendo realizado um update.
+
+```csharp
+//Buscando
+input.Invoice = await repositoryInvoice.FindAsync(input.InvoiceId);
+    //Validadando e alterando a propriedade
+    if (input.Canceller)
+        input.Invoice.Status = InvoiceStatusEnum.Cancelled;
+    //Salvando a alteração
+    repositoryInvoice.SaveChanges();
+    //Salvando o objeto principal
+    this.repositoryInvoiceRebate.Add(input);
+    await this.repositoryInvoiceRebate.SaveChangesAsync();
+```
+
 ### Models
 
 Models são a representação do que vai ser apresentado ao cliente.
