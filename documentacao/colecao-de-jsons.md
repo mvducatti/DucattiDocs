@@ -4,6 +4,8 @@
 
 ### POST /api/InvoiceRebate
 
+Todos os campos mostrados abaixo são obrigatórios para criação de InvoiceRebate
+
 ```javascript
 {
     "canceller": false,
