@@ -1,5 +1,7 @@
 # AutoRest
 
+## Basics
+
 O AutoRest mapeia para o C\# através de um JSON.
 
 Deve-se alterar o yaml \(linha 13\), pois é a referência do arquivo JSON
@@ -43,4 +45,12 @@ csharp:
 Rodar o comando 'autorest' na pasta em que se encontra o arquivo.md no projeto desejado.
 
 ![](../.gitbook/assets/image%20%281%29.png)
+
+## Erros \[Resolução\]
+
+_**Error: File '**_[_**http://localhost:1321/swagger/v1/swagger.json**_](http://localhost:1321/swagger/v1/swagger.json)_**' is not a valid OpenAPI 2.0 definition \(expected 'swagger: 2.0'\)**_
+
+#### Solução
+
+
 
