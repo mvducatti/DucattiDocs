@@ -8,6 +8,7 @@
   * [Específico AFS](c/especifico-afs.md)
   * [Consultas de Dados](c/consultas-de-dados.md)
   * [Relatórios](c/relatorios.md)
+  * [AutoRest](c/autorest.md)
   * [AbacomPY](c/api-asp.net-core.md)
 * [Front-end \(HTML/JS\)](programacao/README.md)
   * [CSS Tricks](programacao/html.md)
