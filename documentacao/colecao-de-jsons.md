@@ -17,16 +17,15 @@ Todos os campos mostrados abaixo são obrigatórios para criação de InvoiceReb
         {
             "description": "Serviço 1",
             "detail": "Detalhe Serviço 1",
-	        "IdExternal": "0CB318FC-3EF0-41D0-BF0C-2BF150166FE6",
+	        "IdExternal": "9476B223-4AF7-4C26-C289-702D0005D98F",
             "iva": 1.22,
             "levelDescription": "Descição Level Serviço 1",
             "parcelOrder": 1,
-            "printedInvoiceId": 3,
             "serieType": 2,
-            "value": 300.00
+            "value": 0.00
         }
     ],
-    "value": 300.00
+    "value": 0.00
 }
 ```
 
