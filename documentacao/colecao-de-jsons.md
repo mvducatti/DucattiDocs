@@ -32,17 +32,17 @@ Todos os campos mostrados abaixo são obrigatórios para criação de InvoiceReb
 
 ### POST /api/Login
 
-Na aba **body**, utilize o código abaixo
+Na aba **body**, utilize a seguinte estrutura:
 
 ```javascript
 {
-    "grantType": "password",
-    "userName": "afs",
-    "password": "whi7/4Ndpq1n#"
+    "grantType": "******",
+    "userName": "******",
+    "password": "******"
 }
 ```
 
-Na aba **Tests**, substitua \(se houver código\) ou adicione \(se não houver\) o pedaçõ de código abaixo
+Na aba **Tests**, substitua \(se houver código\) ou adicione \(se não houver\) o pedaço de código abaixo.
 
 ```javascript
 var jsonData = JSON.parse(responseBody);
