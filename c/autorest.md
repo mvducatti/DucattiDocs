@@ -40,3 +40,7 @@ csharp:
   - https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ClientRuntime/Microsoft.Rest.ClientRuntime
 ```
 
+Rodar o comando 'autorest' na pasta em que se encontra o arquivo.md no projeto desejado.
+
+![](../.gitbook/assets/image%20%281%29.png)
+

@@ -4,9 +4,9 @@
 
 ### Acessando pelo Visual Studio
 
-![No Visual Studio, entre no caminho abaixo](../.gitbook/assets/image%20%281%29.png)
+![No Visual Studio, entre no caminho abaixo](../.gitbook/assets/image%20%282%29.png)
 
-![Nesse caso, selecione o Sda.Abacom.Py.Infrasctructure](../.gitbook/assets/image%20%288%29.png)
+![Nesse caso, selecione o Sda.Abacom.Py.Infrasctructure](../.gitbook/assets/image%20%289%29.png)
 
 ### Criando Migration
 
@@ -40,9 +40,9 @@ remove-migration
 
 Após criar o migration, o mesmo vai aparecer em dois lugares:
 
-![Pasta Migrations](../.gitbook/assets/image%20%283%29.png)
+![Pasta Migrations](../.gitbook/assets/image%20%284%29.png)
 
-![Tabela de miration no banco de dados](../.gitbook/assets/image%20%287%29.png)
+![Tabela de miration no banco de dados](../.gitbook/assets/image%20%288%29.png)
 
 ## Mapeamento
 
