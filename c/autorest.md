@@ -20,7 +20,7 @@ Para atualizar o cliente, simplesmente instale o AutoRest via `npm` (`npm instal
 Essas são as configurações que serão usadas pelo AutoRest:
 
 ``` yaml 
-input-file: http://localhost:52954/swagger/v1/swagger.json
+input-file: http://localhost:1321/swagger/v1/swagger.json
 
 csharp:
   namespace: Sda.Afs.Abacom.Py
