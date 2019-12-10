@@ -52,5 +52,5 @@ _**Error: File '**_[_**http://localhost:1321/swagger/v1/swagger.json**_](http://
 
 #### Solução
 
-
+Criar um projeto novo de aspNetCore com as classes e métodos para gerar o AutoRest corretamente.
 
