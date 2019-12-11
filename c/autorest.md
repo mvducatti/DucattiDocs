@@ -54,3 +54,23 @@ _**Error: File '**_[_**http://localhost:1321/swagger/v1/swagger.json**_](http://
 
 Criar um projeto novo de aspNetCore com as classes e métodos para gerar o AutoRest corretamente.
 
+_**Problema com a versão do swagger**_
+
+**Solução**
+
+Quando for adicionar o swagger, adicione na versão 4.0.1 e utilize o seguinte import e código no **ConfigureServices\(\)**
+
+```csharp
+using Swashbuckle.AspNetCore.Swagger;
+
+// Register the Swagger generator, defining 1 or more Swagger documents
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+});
+```
+
+{% embed url="https://stackoverflow.com/questions/57080588/cannot-convert-from-microsoft-openapi-models-openapiinfo-to-swashbuckle-aspne" %}
+
+
+
