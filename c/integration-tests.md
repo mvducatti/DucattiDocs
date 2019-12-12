@@ -10,8 +10,6 @@
 
 {% embed url="https://stackoverflow.com/questions/10752/what-is-the-difference-between-integration-and-unit-tests" %}
 
-
-
 The key difference, to me, is that **integration tests** reveal if a feature is working or is broken, since they stress the code in a scenario close to reality. They invoke one or more software methods or features and test if they act as expected.
 
 On the opposite, a **Unit test** testing a single method relies on the \(often wrong\) assumption that the rest of the software is correctly working, because it explicitly mocks every dependency.
@@ -91,7 +89,7 @@ The same bug will break just one unit test.
 
 Actually, unit tests for all modules using a broken feature are green because, by using mocks, they removed dependencies. In other words, they run in an ideal, completely fictional world. And this is the only way to isolate bugs and seek them. Unit testing means mocking. If you aren't mocking, you aren't unit testing.
 
-The difference
+### The difference
 
 Integration tests tell **what**'s not working. But they are of no use in **guessing where** the problem could be.
 
