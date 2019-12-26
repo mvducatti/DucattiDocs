@@ -142,3 +142,7 @@ basicConfigType.GetAll().SelectMany(x => x.PaymentTypes).ToList();
 // Retorna List<PaymentType> - CORRETO
 ```
 
+### FirstorDefault\(\)
+
+obs: se não encontrar ninguém, o resultado desse método vai ser nulo.
+
