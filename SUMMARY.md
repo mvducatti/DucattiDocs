@@ -11,6 +11,7 @@
   * [Relatórios](c/relatorios.md)
   * [AutoRest](c/autorest.md)
   * [AbacomPY](c/api-asp.net-core.md)
+  * [HealthCheck](c/healthcheck.md)
   * [Integration Tests](c/integration-tests.md)
 * [Front-end \(HTML/JS\)](programacao/README.md)
   * [CSS Tricks](programacao/html.md)
