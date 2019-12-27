@@ -14,5 +14,3 @@
 
 {% embed url="https://gist.github.com/SuricateCan/fbd6d8586a7184610eebbef673ebba3d" %}
 
-
-
