@@ -14,3 +14,14 @@
 
 {% embed url="https://gist.github.com/SuricateCan/fbd6d8586a7184610eebbef673ebba3d" %}
 
+### Código de Webhook
+
+```csharp
+setup.AddWebhookNotification(
+    name:"Slack", 
+    uri: "https://hooks.slack.com/services/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",
+    payload: "{\"text\":\"[[LIVENESS]] is failing with error message [[FAILURE]]\"}",
+    restorePayload: "{\"text\":\"[[LIVENESS]] is restored\"}"
+);
+```
+
