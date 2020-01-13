@@ -13,3 +13,11 @@
 }
 ```
 
+## Jogar todos os items para o lado direito da tela
+
+```css
+#pagination-factura-controller {
+    float:right;
+}
+```
+
