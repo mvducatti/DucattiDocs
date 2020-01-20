@@ -171,3 +171,9 @@ angular.forEach($scope.entityNotifyConfigList, function (value) {
 });
 ```
 
+## Loading...
+
+```csharp
+$.busy(bool);
+```
+
