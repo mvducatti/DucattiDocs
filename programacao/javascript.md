@@ -67,11 +67,3 @@ teste.replace(/^0+/, '')
 cpnj.split('.').join("").split('/').join("").split('-').join("");
 ```
 
-## Dinamicamente trocando zeros por números digitados
-
-```coffeescript
-$scope.padLeft = function (number, nr) {
-    return ('0'.repeat(nr) + number).slice(-nr);
-}
-```
-

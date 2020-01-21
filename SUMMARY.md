@@ -14,6 +14,7 @@
   * [HealthCheck](c/healthcheck.md)
   * [Integration Tests](c/integration-tests.md)
 * [Front-end \(HTML/JS\)](programacao/README.md)
+  * [HTML](programacao/html-1.md)
   * [CSS Tricks](programacao/html.md)
   * [Manipulação de Dados](programacao/filtros-js-linq-lodash.md)
   * [Javascript](programacao/javascript.md)
