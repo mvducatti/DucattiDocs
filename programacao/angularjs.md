@@ -177,3 +177,14 @@ angular.forEach($scope.entityNotifyConfigList, function (value) {
 $.busy(bool);
 ```
 
+## Redirecionamento
+
+Esse código faz com que você possa enviar o usuário para o link desejado. **$location.absUrl\(\)** traz a url principal dinamicamente, para usar é necessário importar **$location** e **$window** no controller e na função do mesmo.
+
+```coffeescript
+angular.module('app').controller("x", 
+['$window', '$location', function ($window, $location) {
+    $window.open(`${$location.absUrl()}Parameterization/GeneralConfigurations`);
+}]);
+```
+
