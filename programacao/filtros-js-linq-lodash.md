@@ -17,49 +17,6 @@ _.filter(result, function(item){
 })
 ```
 
-### Filtando Sublistas
-
-```javascript
-//Exemplo de 3 listas, uma dentro da outra
-mainList = [
- {ControlNegotiationLite [
-  {Billet : 'ExternalNumber' = 0}
- ]},
- {ControlNegotiationLite [
-  {Billet : 'ExternalNumber' = 0},
-  {Billet : 'ExternalNumber'= 2 }
- ]}
-]
- 
-//Mapeando ControlNegotiationLite
-_.chain(mainList)
-   .map("ControlNegotiationLite")
-   .flatten()
-   .value()
-//outpout: (2) ControlNegotiationLite
- 
-//Mapeando Billet dentro de ControlNegotiationLite
-_.chain(mainList)
-   .map("ControlNegotiationLite")
-   .flatten()
-   .map("Billets")
-   .flatten()
-   .value()
-//outpout: (3) Billets
-
-//Filtrando Billet dentro de ControlNegotiationLite utilizando 
-//o mapeamento anterior
-_.filter(_.chain(mainList)
-   .map("ControlNegotiationLite")
-   .flatten()
-   .map("Billets")
-   .flatten()
-   .value(), function(o) { 
-   return o.ExternalNumber != 0; 
-});
-//outpout: (1) Billet
-```
-
 ## Some - Booleano
 
 ```coffeescript
