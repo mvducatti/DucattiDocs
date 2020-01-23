@@ -355,3 +355,9 @@ this.cardPaymentInfoBusiness.CreateJournalToSave(batchList, accountingMonth,
 username);
 ```
 
+## Async/Await
+
+ When used **Task.Wait\(\)**, if the task threw an exception, it will be wrapped inside an **AggregateException**. But when we are using **Task.GetAwaiter\(\).GetResult\(\)**, it will throw the exception directly which will make things like debugging/logging easy.
+
+{% embed url="http://jaliyaudagedara.blogspot.com/2019/06/taskwait-vs-taskgetawaitergetresult.html" %}
+
