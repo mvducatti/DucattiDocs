@@ -188,3 +188,15 @@ angular.module('app').controller("x",
 }]);
 ```
 
+## Argument 'xyz' is not a function, got undefined
+
+Para consertar o erro abaixo, basta adicionar uma referência do arquivo javascript no HTML em que deseja acessar as funções do arquivo JS.
+
+```coffeescript
+Error: [ng:areq] Argument 'FinancialAgreementFaturacionController' is not a function, got undefined
+```
+
+![](../.gitbook/assets/image%20%287%29.png)
+
+
+
