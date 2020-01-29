@@ -44,3 +44,12 @@ services.AddHealthChecksUI(setupSettings: setup =>
 });
 ```
 
+```csharp
+//Rota para utilização interna do HealthCheck-UI
+app.UseHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+```
+
