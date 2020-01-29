@@ -25,3 +25,22 @@ setup.AddWebhookNotification(
 );
 ```
 
+```csharp
+//Configurando Endpoint do HealthCheck para configuração e utilização interna do HealthCheck-UI
+endpoints.MapHealthChecks("/hc");
+endpoints.MapHealthChecksUI(delegate (Options options)
+{
+    options.UIPath = "/hc-ui";
+    options.AddCustomStylesheet("./Customization/custom.css");
+});
+```
+
+```csharp
+//Configurando rota de recursos para o HealthCheck UI
+services.AddHealthChecksUI(setupSettings: setup =>
+{
+    setup.SetMinimumSecondsBetweenFailureNotifications(60);
+    setup.AddHealthCheckEndpoint("Basic healthcheck", "/hc");
+});
+```
+
