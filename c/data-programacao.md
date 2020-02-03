@@ -20,5 +20,5 @@ Utilza-se os métodos **DateTimeZone.StartDate\(\)** para início de data da con
 
 {% embed url="http://localhost:1078/Home/Datetimeinfo" %}
 
-![](../.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/image%20%283%29.png)
 

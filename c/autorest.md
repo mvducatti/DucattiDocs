@@ -44,7 +44,7 @@ csharp:
 
 Rodar o comando 'autorest' na pasta em que se encontra o arquivo.md no projeto desejado.
 
-![](../.gitbook/assets/image%20%281%29.png)
+![](../.gitbook/assets/image%20%282%29.png)
 
 ## Erros \[Resolução\]
 
@@ -52,7 +52,13 @@ _**Error: File '**_[_**http://localhost:1321/swagger/v1/swagger.json**_](http://
 
 #### Solução
 
-Criar um projeto novo de aspNetCore com as classes e métodos para gerar o AutoRest corretamente.
+Criar um projeto novo de aspNetCore com as classes e métodos que você precisa para gerar o AutoRest corretamente.
+
+![](../.gitbook/assets/image%20%281%29.png)
+
+![](../.gitbook/assets/image%20%289%29.png)
+
+![](../.gitbook/assets/image%20%288%29.png)
 
 _**Problema com a versão do swagger**_
 
