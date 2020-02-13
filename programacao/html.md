@@ -25,7 +25,7 @@ Pode-se usar também a propriedade "right" dentro do elemento. obs: ela funciona
 
 ## Fazer Dropdown aparecer fora do popup
 
-![](../.gitbook/assets/image%20%2818%29.png)
+![](../.gitbook/assets/image%20%2819%29.png)
 
 Na maioria das vezes quando temos um dropdown grande dentro de um popup com tamanho limitado, o mesmo acaba aparecendo dentro do popup e criando uma barra de rolagem na lateral do mesmo. Para consertar esse problema e o dropdown aparecer corretamente igual na imagem acima, deve-se adicionar a propriedade "overflow: visible" dentro do body do popup.
 
@@ -45,6 +45,29 @@ function () {
     $.popup({});
     // Deve ser chamado após o popup ser carregado, senão a classe não vai ser adicionad
     $(".ui-dialog-content").addClass("overflowed");
+}
+```
+
+## Mantendo popup secundário sempre na frente
+
+![](../.gitbook/assets/image%20%285%29.png)
+
+As vezes popups abertos dentro de outro popups tendem a ficar atrás do popup inicial causando problemas na view. Para garantir que o popup secundário vai ficar na frente do inicial, sem restrições, deve-se utilizar o código abaixo.
+
+```css
+// CSS
+.indexTop {
+    z-index: 99998 !important;
+}
+```
+
+```d
+// JS
+function () {
+    // Deve ser chamado antes do popup ser carregado
+    $(".ui-dialog").addClass("indexTop");
+    // Abrindo popup
+    $.popup({});
 }
 ```
 
