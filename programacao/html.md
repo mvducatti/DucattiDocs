@@ -43,7 +43,9 @@ Para adicionar dentro do body, você deve utilizar o código
 function () {
     // Abrindo popup
     $.popup({});
-    // Deve ser chamado após o popup ser carregado, senão a classe não vai ser adicionad
+    // Deve ser chamado após o popup ser carregado, 
+    // senão a classe não vai ser adicionada, pois o popup ainda
+    // não existe ainda para receber a adição da classe
     $(".ui-dialog-content").addClass("overflowed");
 }
 ```
@@ -64,7 +66,9 @@ As vezes popups abertos dentro de outro popups tendem a ficar atrás do popup in
 ```d
 // JS
 function () {
-    // Deve ser chamado antes do popup ser carregado
+    // Deve ser chamado antes do popup ser carregado.
+    // Aqui pode-se chamar antes, pois o z-index já existe no popup, 
+    // só está sendo alterado o valor nesse caso
     $(".ui-dialog").addClass("indexTop");
     // Abrindo popup
     $.popup({});
