@@ -21,3 +21,11 @@
 }
 ```
 
+Pode-se usar também a propriedade "right" dentro do elemento. obs: ela funciona apenas nas versões antigas do CSS.
+
+## Fazer Dropdown aparecer fora do popup
+
+![](../.gitbook/assets/image%20%2818%29.png)
+
+Na maioria das vezes quando temos um dropdown grande dentro de um popup com tamanho limitado, o mesmo acaba aparecendo dentro do popup e criando uma barra de rolagem na lateral do mesmo. Para consertar esse problema e o dropdown aparecer corretamente igual na imagem acima, deve-se adicionar a propriedade "overflow: visible" dentro do body do popup.
+

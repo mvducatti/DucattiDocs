@@ -9,3 +9,5 @@
 onpaste="return false"
 ```
 
+### Permitir somente números \(AFS\)
+
