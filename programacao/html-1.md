@@ -5,9 +5,13 @@
 ```csharp
 //** PROPRIEDADES **//
 
-//Impede o usuário de colar em um imput
+// Impede o usuário de colar em um imput
 onpaste="return false"
-```
 
-### Permitir somente números \(AFS\)
+// Permite apenas números no input
+number-input
+
+// Enviar para a direita
+right
+```
 
