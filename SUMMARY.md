@@ -7,7 +7,7 @@
   * [Conceitos Avançados](c/conceitos-avancados.md)
   * [Conceitos Diversos](c/conceitos-diversos.md)
   * [Específico AFS](c/especifico-afs.md)
-  * [Consultas de Dados](c/consultas-de-dados.md)
+  * [Manipulação de Dados](c/consultas-de-dados.md)
   * [Relatórios](c/relatorios.md)
   * [AutoRest](c/autorest.md)
   * [AbacomPY](c/api-asp.net-core.md)
