@@ -184,7 +184,7 @@ public class Person : ICloneable
     public string name { get; set; }
     public int? age { get; set; }
 
-    public object Clone = () => return this.MemberwiseClone();
+    public object Clone () => return this.MemberwiseClone();
 }
 ```
 
