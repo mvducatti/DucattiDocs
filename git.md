@@ -17,7 +17,7 @@ git reset --hard HEAD~1
 ```text
 Summarize the change in less than 50 characters
 
-Because:
+Motivo:
 - Explain the reasons you made this change
 - Make a new bullet for each reason
 - Each line should be under 72 characters
