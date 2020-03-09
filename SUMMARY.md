@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Bem-vindo ao Ducatti Docs](README.md)
+* [Refatoração](refatoracao/README.md)
+  * [AbacomPY no AFS](refatoracao/abacompy-no-afs.md)
 * [C\#](c/README.md)
   * [Datas \(Documentação\)](c/datas-documentacao.md)
   * [Data - Programação](c/data-programacao.md)
