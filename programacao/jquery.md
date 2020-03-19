@@ -39,3 +39,31 @@ $('#combo-period').attr("aria-disabled") //retorna "boolean"
 $('#combo-period').is("aria-disabled") //retorna boolean
 ```
 
+## Cancelar Loading Ajax
+
+Colocar o código abaixo dentro da chamada Ajax
+
+```coffeescript
+// Código a ser adicionado
+
+beforeSend: function () { },
+complete: function () { }
+
+// Exemplo final
+
+$.ajax({
+    type: "POST",
+    url: "Home/VerifyPendingInvoices",
+    beforeSend: function () { },
+    complete: function () { }
+}).done(function (result) {
+    if (result.Success) {
+        vm.pendingInvoices = result.pendingInvoices;
+        vm.loadedPendingInvoices = true;
+        vm.$digest();
+    } else {
+        alert(result.Message);
+    }
+});
+```
+
