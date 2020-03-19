@@ -10,22 +10,20 @@
 
 ```javascript
 $scope.getSessionInfo = function () {
- 
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                type: "POST",
-                url: "/AccountsReceiving/CreditLimit/getSessionInfo",
-            }).done(function (result) {
- 
-                resolve(result);
- 
-                $scope.selected.LegalEntity = result.SessionLegalEntity;
-                $scope.$apply();
-                $scope.legalEntities = result.legalEntities;
-                $scope.GetCreditLimits();
-            });
- 
-        });
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "POST",
+            url: "/AccountsReceiving/CreditLimit/getSessionInfo",
+        }).done(function (result) {
+
+        resolve(result);
+
+        $scope.selected.LegalEntity = result.SessionLegalEntity;
+        $scope.$apply();
+        $scope.legalEntities = result.legalEntities;
+        $scope.GetCreditLimits();
+    });
+});
 ```
 
 ## Usando filtro de data quando a data vier no formato /\(xxxxxxxx\)
