@@ -16,6 +16,35 @@ Cria o script de migração pra adicionar no banco
 add-migration newMigrationDescription
 ```
 
+O comando acima vai gerar o arquivo abaixo. Por padrão vai criar o método Up\(\) e Down\(\) vazios. No método Up\(\) você coloca as informações que serão adicionadas no banco e no método Down\(\) o que deve ser feito em caso de rollback. No exemplo abaixo no Up\(\) está sendo adicionado uma nova coluna e no Down\(\) está dando um drop nessa coluna.
+
+```csharp
+using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+
+namespace Sda.Abacom.Py.Infrastructure.Migrations
+{
+    public partial class newLevelIdExternal : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "LevelIdExternal",
+                table: "Services",
+                nullable: false,
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "LevelIdExternal",
+                table: "Services");
+        }
+    }
+}
+```
+
 Atualizar o banco com base nas migrações 
 
 ```c
