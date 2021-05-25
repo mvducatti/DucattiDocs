@@ -44,7 +44,7 @@ csharp:
 
 Rodar o comando 'autorest' na pasta em que se encontra o arquivo.md no projeto desejado.
 
-![](../.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/image%20%281%29%20%281%29.png)
 
 ## Erros \[Resolução\]
 
@@ -56,9 +56,9 @@ Criar um projeto novo de aspNetCore com as classes e métodos que você precisa 
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-![](../.gitbook/assets/image%20%2810%29.png)
-
 ![](../.gitbook/assets/image%20%289%29.png)
+
+![](../.gitbook/assets/image%20%288%29.png)
 
 _**Problema com a versão do swagger**_
 

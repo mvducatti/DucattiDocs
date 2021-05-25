@@ -194,7 +194,7 @@ Para consertar o erro abaixo, basta adicionar uma referência do arquivo javascr
 Error: [ng:areq] Argument 'FinancialAgreementFaturacionController' is not a function, got undefined
 ```
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%287%29.png)
 
 
 

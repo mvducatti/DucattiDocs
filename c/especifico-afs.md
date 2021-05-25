@@ -101,7 +101,7 @@ DataFactory.Instance.GetAccountingItemData.GetAll();
 
 Sempre quando criar um mapeamento, ir nas propriedades e setar o **`Build Action`** como **`Embedded Resource`**
 
-![](../.gitbook/assets/image%20%2820%29.png)
+![](../.gitbook/assets/image%20%2812%29.png)
 
 ### String x AnsiString
 

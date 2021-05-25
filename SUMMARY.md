@@ -29,6 +29,8 @@
   * [Programação Banco de Dados](banco-de-dados/banco-de-dados.md)
   * [Scripts Úteis](banco-de-dados/scripts.md)
 * [Documentação](documentacao/README.md)
+  * [Arquivo Bancário](documentacao/arquivo-bancario.md)
+  * [Retorno de Arquivo Bancário](documentacao/retorno-de-arquivo-bancario.md)
   * [Coleção de Jsons](documentacao/colecao-de-jsons.md)
   * [Contabilização](documentacao/contabilizacao.md)
 * [Visual Studio](visual-studio.md)
