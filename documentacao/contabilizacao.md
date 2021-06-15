@@ -13,6 +13,9 @@
 Batch é o caixa que recebeu as transações durante o período que esteve aberto, então quando fechar o caixa, vão existir diversos Transactions para aquele Batch específico. Dentro de cada TransactionAfs vai existir do detalhe da transação \(TransactionDetail\)...
 
 * Batch \(Caixa\)
+* Journal
+* JournalItem \(item que está sendo contabilizado\)
+* CurrentAccount
 * TransactionAfs
 * TransactionDetail
 * ParcelDetail
